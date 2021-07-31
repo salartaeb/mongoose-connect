@@ -19,16 +19,13 @@ kittySchema.methods.speak = function () {
   console.log(greeting);
 }
 
-
 // a model is a class in which we construct documents, 
 // in this case each document will be a kitty with properties and behaviours declared in schema.
 const Kitten = mongoose.model('Kitten', kittySchema);
+
 // For now we have only defined the name property which accepts a String
-// Lets create a kitty document below
-
+// Lets create a kitty document belowv
 const silence = new Kitten({name: 'Silence'});
-// console.log(silence.name, 'this is the name of new kitty we made');
-
 
 // to save a mongodb document you need to call the save function on it
 silence.save(function (err, silence) {
@@ -36,9 +33,9 @@ silence.save(function (err, silence) {
   silence.speak();
 })
 
-// Kitten.find((err, kittens) => {
-//   if (err) return console.log(err);
-//   console.log(kittens);
-// })
+Kitten.find((err, kittens) => {
+  if (err) return console.log(err);
+  console.log(kittens);
+})
 
-Kitten.find({ name: /^Silence/ });
+
